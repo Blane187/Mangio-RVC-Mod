@@ -8,12 +8,12 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
     with gr.Tabs():
         with gr.TabItem(""):
                 sid0 = gr.Dropdown(
-                    label=i18n("voice models"), choices=sorted(names), value=""
+                    label=("voice models"), choices=sorted(names), value=""
                  )
                 # input_audio_path2
 
                 refresh_button = gr.Button(
-                    i18n("Refresh voice list, index path and audio files"),
+                    ("Refresh voice list, index path and audio files"),
                     variant="primary",
                 )
                 clean_button = gr.Button("clear button"), variant="primary")
