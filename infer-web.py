@@ -5,6 +5,8 @@ from idontknow import *
 with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
     gr.HTML("<h1> <h1 align="center"><b> MANGIO RVC MOD  <b> </h1>")
     gr.markdown("credits to:<br> [Mangio621](https://github.com/Mangio621)<br>[Kalomaze](https://github.com/kalomaze]")
+    with gr.Tabs():
+        with gr.TabItem(""):
                 sid0 = gr.Dropdown(
                     label=i18n("voice models"), choices=sorted(names), value=""
                  )
