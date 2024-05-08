@@ -3,14 +3,30 @@ from idontknow import *
 
 # Change your Gradio Theme here. 👇 👇 👇 👇 Example: " theme='HaleyCH/HaleyCH_Theme' "
 with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
-    gr.HTML("<h1> The Mangio-RVC-Fork 💻 </h1>")
-    gr.Markdown(
-        value=i18n(
-            "本软件以MIT协议开源, 作者不对软件具备任何控制力, 使用软件者、传播软件导出的声音者自负全责. <br>如不认可该条款, 则不能使用或引用软件包内任何代码和文件. 详见根目录<b>使用需遵守的协议-LICENSE.txt</b>."
+    gr.HTML("<h1> <h1 align="center"><b> MANGIO RVC MOD  <b> </h1>")
+    gr.markdown("credits to:<br> [Mangio621](https://github.com/Mangio621)<br>[Kalomaze](https://github.com/kalomaze]")
+        sid0 = gr.Dropdown(
+            label=i18n("voice models"), choices=sorted(names), value=""
         )
-    )
+                # input_audio_path2
+
+                refresh_button = gr.Button(
+                    i18n("Refresh voice list, index path and audio files"),
+                    variant="primary",
+                )
+                clean_button = gr.Button("clear button"), variant="primary")
+                spk_item = gr.Slider(
+                    minimum=0,
+                    maximum=2333,
+                    step=1,
+                    label=("speaker id"),
+                    value=0,
+                    visible=False,
+                    interactive=True,
+                )
+                clean_button.click(fn=clean, inputs=[], outputs=[sid0])
     with gr.Tabs():
-        with gr.TabItem(i18n("模型推理")):
+        with gr.TabItem("inference"):
             # Inference Preset Row
             # with gr.Row():
             #     mangio_preset = gr.Dropdown(label="Inference Preset", choices=sorted(get_presets()))
@@ -22,26 +38,6 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
             # Other RVC stuff
             with gr.Row():
                 # sid0 = gr.Dropdown(label=i18n("推理音色"), choices=sorted(names), value=check_for_name())
-                sid0 = gr.Dropdown(
-                    label=i18n("推理音色"), choices=sorted(names), value=""
-                )
-                # input_audio_path2
-
-                refresh_button = gr.Button(
-                    i18n("Refresh voice list, index path and audio files"),
-                    variant="primary",
-                )
-                clean_button = gr.Button(i18n("卸载音色省显存"), variant="primary")
-                spk_item = gr.Slider(
-                    minimum=0,
-                    maximum=2333,
-                    step=1,
-                    label=i18n("请选择说话人id"),
-                    value=0,
-                    visible=False,
-                    interactive=True,
-                )
-                clean_button.click(fn=clean, inputs=[], outputs=[sid0])
 
             with gr.Group():
                 gr.Markdown(
