@@ -7,26 +7,24 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
     gr.markdown("credits to:<br> [Mangio621](https://github.com/Mangio621)<br>[Kalomaze](https://github.com/kalomaze]")
     with gr.Tabs():
         with gr.TabItem(""):
-                sid0 = gr.Dropdown(
-                    label=("voice models"), choices=sorted(names), value=""
-                 )
-                # input_audio_path2
-
-                refresh_button = gr.Button(
-                    ("Refresh voice list, index path and audio files"),
-                    variant="primary",
-                )
-                clean_button = gr.Button("clear button"), variant="primary")
-                spk_item = gr.Slider(
-                    minimum=0,
-                    maximum=2333,
-                    step=1,
-                    label=("speaker id"),
-                    value=0,
-                    visible=False,
-                    interactive=True,
-                )
-                clean_button.click(fn=clean, inputs=[], outputs=[sid0])
+            sid0 = gr.Dropdown(
+                label=("voice models"), choices=sorted(names), value=""
+            )
+            refresh_button = gr.Button(
+                ("Refresh voice list, index path and audio files"),
+                variant="primary",
+            )
+            clean_button = gr.Button("clear button"), variant="primary")
+            spk_item = gr.Slider(
+                minimum=0,
+                maximum=2333,
+                step=1,
+                label=("speaker id"),
+                value=0,
+                visible=False,
+                interactive=True,
+            )
+            clean_button.click(fn=clean, inputs=[], outputs=[sid0])
     with gr.Tabs():
         with gr.TabItem("inference"):
             # Inference Preset Row
