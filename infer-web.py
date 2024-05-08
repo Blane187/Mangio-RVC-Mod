@@ -22,7 +22,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
             # Other RVC stuff
             with gr.Row():
                 # sid0 = gr.Dropdown(label=i18n("推理音色"), choices=sorted(names), value=check_for_name())
-                sid0 = gr.Dropdown(label=i18n("推理音色"), choices=sorted(names), value="")
+                sid0 = gr.Dropdown(
+                    label=i18n("推理音色"), choices=sorted(names), value=""
+                )
                 # input_audio_path2
 
                 refresh_button = gr.Button(
@@ -43,12 +45,15 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
 
             with gr.Group():
                 gr.Markdown(
-                    value=i18n("男转女推荐+12key, 女转男推荐-12key, 如果音域爆炸导致音色失真也可以自己调整到合适音域. ")
+                    value=i18n(
+                        "男转女推荐+12key, 女转男推荐-12key, 如果音域爆炸导致音色失真也可以自己调整到合适音域. "
+                    )
                 )
                 with gr.Row():
                     with gr.Column():
                         vc_transform0 = gr.Number(
-                            label=i18n("变调(整数, 半音数量, 升八度12降八度-12)"), value=0
+                            label=i18n("变调(整数, 半音数量, 升八度12降八度-12)"),
+                            value=0,
                         )
                         input_audio0 = gr.Textbox(
                             label=i18n(
@@ -103,7 +108,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                         filter_radius0 = gr.Slider(
                             minimum=0,
                             maximum=7,
-                            label=i18n(">=3则使用对harvest音高识别的结果使用中值滤波，数值为滤波半径，使用可以削弱哑音"),
+                            label=i18n(
+                                ">=3则使用对harvest音高识别的结果使用中值滤波，数值为滤波半径，使用可以削弱哑音"
+                            ),
                             value=3,
                             step=1,
                             interactive=True,
@@ -153,7 +160,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                         rms_mix_rate0 = gr.Slider(
                             minimum=0,
                             maximum=1,
-                            label=i18n("输入源音量包络替换输出音量包络融合比例，越靠近1越使用输出包络"),
+                            label=i18n(
+                                "输入源音量包络替换输出音量包络融合比例，越靠近1越使用输出包络"
+                            ),
                             value=0.25,
                             interactive=True,
                         )
@@ -249,11 +258,15 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                         )
                         ##formant_refresh_button.click(fn=preset_apply, inputs=[formant_preset, qfrency, tmbre], outputs=[formant_preset, qfrency, tmbre])
                         ##formant_refresh_button.click(fn=update_fshift_presets, inputs=[formant_preset, qfrency, tmbre], outputs=[formant_preset, qfrency, tmbre])
-                    f0_file = gr.File(label=i18n("F0曲线文件, 可选, 一行一个音高, 代替默认F0及升降调"))
+                    f0_file = gr.File(
+                        label=i18n("F0曲线文件, 可选, 一行一个音高, 代替默认F0及升降调")
+                    )
                     but0 = gr.Button(i18n("转换"), variant="primary")
                     with gr.Row():
                         vc_output1 = gr.Textbox(label=i18n("输出信息"))
-                        vc_output2 = gr.Audio(label=i18n("输出音频(右下角三个点,点了可以下载)"))
+                        vc_output2 = gr.Audio(
+                            label=i18n("输出音频(右下角三个点,点了可以下载)")
+                        )
                     but0.click(
                         vc_single,
                         [
@@ -277,14 +290,19 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                     )
             with gr.Group():
                 gr.Markdown(
-                    value=i18n("批量转换, 输入待转换音频文件夹, 或上传多个音频文件, 在指定文件夹(默认opt)下输出转换的音频. ")
+                    value=i18n(
+                        "批量转换, 输入待转换音频文件夹, 或上传多个音频文件, 在指定文件夹(默认opt)下输出转换的音频. "
+                    )
                 )
                 with gr.Row():
                     with gr.Column():
                         vc_transform1 = gr.Number(
-                            label=i18n("变调(整数, 半音数量, 升八度12降八度-12)"), value=0
+                            label=i18n("变调(整数, 半音数量, 升八度12降八度-12)"),
+                            value=0,
                         )
-                        opt_input = gr.Textbox(label=i18n("指定输出文件夹"), value="opt")
+                        opt_input = gr.Textbox(
+                            label=i18n("指定输出文件夹"), value="opt"
+                        )
                         f0method1 = gr.Radio(
                             label=i18n(
                                 "选择音高提取算法,输入歌声可用pm提速,harvest低音好但巨慢无比,crepe效果好但吃GPU"
@@ -297,7 +315,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                         filter_radius1 = gr.Slider(
                             minimum=0,
                             maximum=7,
-                            label=i18n(">=3则使用对harvest音高识别的结果使用中值滤波，数值为滤波半径，使用可以削弱哑音"),
+                            label=i18n(
+                                ">=3则使用对harvest音高识别的结果使用中值滤波，数值为滤波半径，使用可以削弱哑音"
+                            ),
                             value=3,
                             step=1,
                             interactive=True,
@@ -348,7 +368,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                         rms_mix_rate1 = gr.Slider(
                             minimum=0,
                             maximum=1,
-                            label=i18n("输入源音量包络替换输出音量包络融合比例，越靠近1越使用输出包络"),
+                            label=i18n(
+                                "输入源音量包络替换输出音量包络融合比例，越靠近1越使用输出包络"
+                            ),
                             value=1,
                             interactive=True,
                         )
@@ -364,12 +386,15 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                         )
                     with gr.Column():
                         dir_input = gr.Textbox(
-                            label=i18n("输入待处理音频文件夹路径(去文件管理器地址栏拷就行了)"),
+                            label=i18n(
+                                "输入待处理音频文件夹路径(去文件管理器地址栏拷就行了)"
+                            ),
                             value=os.path.abspath(os.getcwd()).replace("\\", "/")
                             + "/audios/",
                         )
                         inputs = gr.File(
-                            file_count="multiple", label=i18n("也可批量输入音频文件, 二选一, 优先读文件夹")
+                            file_count="multiple",
+                            label=i18n("也可批量输入音频文件, 二选一, 优先读文件夹"),
                         )
                     with gr.Row():
                         format1 = gr.Radio(
@@ -432,10 +457,13 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                             value=((os.getcwd()).replace("\\", "/") + "/audios/"),
                         )
                         wav_inputs = gr.File(
-                            file_count="multiple", label=i18n("也可批量输入音频文件, 二选一, 优先读文件夹")
+                            file_count="multiple",
+                            label=i18n("也可批量输入音频文件, 二选一, 优先读文件夹"),
                         )  #####
                     with gr.Column():
-                        model_choose = gr.Dropdown(label=i18n("模型"), choices=uvr5_names)
+                        model_choose = gr.Dropdown(
+                            label=i18n("模型"), choices=uvr5_names
+                        )
                         agg = gr.Slider(
                             minimum=0,
                             maximum=20,
@@ -532,12 +560,16 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                     )
             with gr.Group():
                 step2b = gr.Markdown(
-                    value=i18n("step2b: 使用CPU提取音高(如果模型带音高), 使用GPU提取特征(选择卡号)")
+                    value=i18n(
+                        "step2b: 使用CPU提取音高(如果模型带音高), 使用GPU提取特征(选择卡号)"
+                    )
                 )
                 with gr.Row():
                     with gr.Column():
                         gpus6 = gr.Textbox(
-                            label=i18n("以-分隔输入使用的卡号, 例如   0-1-2   使用卡0和卡1和卡2"),
+                            label=i18n(
+                                "以-分隔输入使用的卡号, 例如   0-1-2   使用卡0和卡1和卡2"
+                            ),
                             value=gpus,
                             interactive=True,
                         )
@@ -689,7 +721,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                         outputs=[extraction_crepe_hop_length],
                     )
                     gpus16 = gr.Textbox(
-                        label=i18n("以-分隔输入使用的卡号, 例如   0-1-2   使用卡0和卡1和卡2"),
+                        label=i18n(
+                            "以-分隔输入使用的卡号, 例如   0-1-2   使用卡0和卡1和卡2"
+                        ),
                         value=gpus,
                         interactive=True,
                     )
@@ -841,7 +875,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                     info4,
                 )  # def merge(path1,path2,alpha1,sr,f0,info):
             with gr.Group():
-                gr.Markdown(value=i18n("修改模型信息(仅支持weights文件夹下提取的小模型文件)"))
+                gr.Markdown(
+                    value=i18n("修改模型信息(仅支持weights文件夹下提取的小模型文件)")
+                )
                 with gr.Row():  ######
                     ckpt_path0 = gr.Textbox(
                         label=i18n("模型路径"),
@@ -868,7 +904,9 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                     info5 = gr.Textbox(label=i18n("输出信息"), value="", max_lines=8)
                 but7.click(change_info, [ckpt_path0, info_, name_to_save1], info5)
             with gr.Group():
-                gr.Markdown(value=i18n("查看模型信息(仅支持weights文件夹下提取的小模型文件)"))
+                gr.Markdown(
+                    value=i18n("查看模型信息(仅支持weights文件夹下提取的小模型文件)")
+                )
                 with gr.Row():
                     ckpt_path1 = gr.Textbox(
                         label=i18n("模型路径"),
