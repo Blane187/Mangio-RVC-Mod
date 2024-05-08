@@ -5,9 +5,9 @@ from idontknow import *
 with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
     gr.HTML("<h1> <h1 align="center"><b> MANGIO RVC MOD  <b> </h1>")
     gr.markdown("credits to:<br> [Mangio621](https://github.com/Mangio621)<br>[Kalomaze](https://github.com/kalomaze]")
-        sid0 = gr.Dropdown(
-            label=i18n("voice models"), choices=sorted(names), value=""
-        )
+               sid0 = gr.Dropdown(
+                   label=i18n("voice models"), choices=sorted(names), value=""
+                 )
                 # input_audio_path2
 
                 refresh_button = gr.Button(
@@ -257,9 +257,11 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                     f0_file = gr.File(
                         label=i18n("F0曲线文件, 可选, 一行一个音高, 代替默认F0及升降调")
                     )
-                    but0 = gr.Button(i18n("转换"), variant="primary")
+                    with gr.Row():
+                        but0 = gr.Button(i18n("转换"), variant="primary")
                     with gr.Row():
                         vc_output1 = gr.Textbox(label=i18n("输出信息"))
+                    with gr.Row():
                         vc_output2 = gr.Audio(
                             label=i18n("输出音频(右下角三个点,点了可以下载)")
                         )
