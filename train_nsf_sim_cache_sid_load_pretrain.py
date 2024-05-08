@@ -581,9 +581,11 @@ def train_and_evaluate(
                 else (lambda: exec('raise ValueError("No data")'))()
             )
             stopbtn = (
-                lambda stopbtn: True
-                if stopbtn.lower() == "true"
-                else (False if stopbtn.lower() == "false" else stopbtn)
+                lambda stopbtn: (
+                    True
+                    if stopbtn.lower() == "true"
+                    else (False if stopbtn.lower() == "false" else stopbtn)
+                )
             )(stopbtn)
     except (ValueError, TypeError, IndexError):
         stopbtn = False
