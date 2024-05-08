@@ -13,8 +13,7 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
             refresh_button = gr.Button(
                 ("Refresh voice list, index path and audio files"),
                 variant="primary",
-            )
-            clean_button = gr.Button("clear button"), variant="primary")
+           )
             spk_item = gr.Slider(
                 minimum=0,
                 maximum=2333,
@@ -24,9 +23,10 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
                 visible=False,
                 interactive=True,
             )
-            clean_button.click(fn=clean, inputs=[], outputs=[sid0])
+            
     with gr.Tabs():
-        with gr.TabItem("inference"):
+        with gr.TabItem("start inference"):
+    
             # Inference Preset Row
             # with gr.Row():
             #     mangio_preset = gr.Dropdown(label="Inference Preset", choices=sorted(get_presets()))
@@ -34,11 +34,8 @@ with gr.Blocks(theme=gr.themes.Base(), title="Mangio-RVC-Web 💻") as app:
             #         label="Your preset name"
             #     )
             #     mangio_preset_save_btn = gr.Button('Save Preset', variant="primary")
-
-            # Other RVC stuff
-            with gr.Row():
-                # sid0 = gr.Dropdown(label=i18n("推理音色"), choices=sorted(names), value=check_for_name())
-
+            clean_button = gr.Button("clear button"), variant="primary")
+            clean_button.click(fn=clean, inputs=[], outputs=[sid0])
             with gr.Group():
                 gr.Markdown(
                     value=i18n(
