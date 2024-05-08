@@ -72,9 +72,11 @@ global DoFormant, Quefrency, Timbre
 try:
     DoFormant, Quefrency, Timbre = CSVutil("csvdb/formanting.csv", "r", "formanting")
     DoFormant = (
-        lambda DoFormant: True
-        if DoFormant.lower() == "true"
-        else (False if DoFormant.lower() == "false" else DoFormant)
+        lambda DoFormant: (
+            True
+            if DoFormant.lower() == "true"
+            else (False if DoFormant.lower() == "false" else DoFormant)
+        )
     )(DoFormant)
 except (ValueError, TypeError, IndexError):
     DoFormant, Quefrency, Timbre = False, 1.0, 1.0
@@ -490,7 +492,9 @@ def get_vc(sid, to_return_protect0, to_return_protect1):
     global n_spk, tgt_sr, net_g, vc, cpt, version
     if sid == "" or sid == []:
         global hubert_model
-        if hubert_model is not None:  # 考虑到轮询, 需要加个判断看是否 sid 是由有模型切换到无模型的
+        if (
+            hubert_model is not None
+        ):  # 考虑到轮询, 需要加个判断看是否 sid 是由有模型切换到无模型的
             print("clean_empty_cache")
             del net_g, n_spk, vc, hubert_model, tgt_sr  # ,cpt
             hubert_model = net_g = n_spk = vc = hubert_model = tgt_sr = None
@@ -833,12 +837,16 @@ def change_sr2(sr2, if_f0_3, version19):
             "doesn't exist, will not use pretrained model",
         )
     return (
-        "pretrained%s/%sG%s.pth" % (path_str, f0_str, sr2)
-        if if_pretrained_generator_exist
-        else "",
-        "pretrained%s/%sD%s.pth" % (path_str, f0_str, sr2)
-        if if_pretrained_discriminator_exist
-        else "",
+        (
+            "pretrained%s/%sG%s.pth" % (path_str, f0_str, sr2)
+            if if_pretrained_generator_exist
+            else ""
+        ),
+        (
+            "pretrained%s/%sD%s.pth" % (path_str, f0_str, sr2)
+            if if_pretrained_discriminator_exist
+            else ""
+        ),
     )
 
 
@@ -869,12 +877,16 @@ def change_version19(sr2, if_f0_3, version19):
             "doesn't exist, will not use pretrained model",
         )
     return (
-        "pretrained%s/%sG%s.pth" % (path_str, f0_str, sr2)
-        if if_pretrained_generator_exist
-        else "",
-        "pretrained%s/%sD%s.pth" % (path_str, f0_str, sr2)
-        if if_pretrained_discriminator_exist
-        else "",
+        (
+            "pretrained%s/%sG%s.pth" % (path_str, f0_str, sr2)
+            if if_pretrained_generator_exist
+            else ""
+        ),
+        (
+            "pretrained%s/%sD%s.pth" % (path_str, f0_str, sr2)
+            if if_pretrained_discriminator_exist
+            else ""
+        ),
         to_return_sr2,
     )
 
@@ -911,12 +923,16 @@ def change_f0(
     if if_f0_3:
         return (
             {"visible": True, "__type__": "update"},
-            "pretrained%s/f0G%s.pth" % (path_str, sr2)
-            if if_pretrained_generator_exist
-            else "",
-            "pretrained%s/f0D%s.pth" % (path_str, sr2)
-            if if_pretrained_discriminator_exist
-            else "",
+            (
+                "pretrained%s/f0G%s.pth" % (path_str, sr2)
+                if if_pretrained_generator_exist
+                else ""
+            ),
+            (
+                "pretrained%s/f0D%s.pth" % (path_str, sr2)
+                if if_pretrained_discriminator_exist
+                else ""
+            ),
             {"visible": True, "__type__": "update"},
             {"visible": True, "__type__": "update"},
             {"visible": True, "__type__": "update"},
@@ -927,12 +943,16 @@ def change_f0(
 
     return (
         {"visible": False, "__type__": "update"},
-        ("pretrained%s/G%s.pth" % (path_str, sr2))
-        if if_pretrained_generator_exist
-        else "",
-        ("pretrained%s/D%s.pth" % (path_str, sr2))
-        if if_pretrained_discriminator_exist
-        else "",
+        (
+            ("pretrained%s/G%s.pth" % (path_str, sr2))
+            if if_pretrained_generator_exist
+            else ""
+        ),
+        (
+            ("pretrained%s/D%s.pth" % (path_str, sr2))
+            if if_pretrained_discriminator_exist
+            else ""
+        ),
         {"visible": False, "__type__": "update"},
         {"visible": False, "__type__": "update"},
         {"visible": False, "__type__": "update"},
@@ -1393,7 +1413,9 @@ def train1key(
     yield get_info_str(cmd)
     p = Popen(cmd, shell=True, cwd=now_dir)
     p.wait()
-    yield get_info_str(i18n("训练结束, 您可查看控制台训练日志或实验文件夹下的train.log"))
+    yield get_info_str(
+        i18n("训练结束, 您可查看控制台训练日志或实验文件夹下的train.log")
+    )
     #######step3b:训练索引
     npys = []
     listdir_res = list(os.listdir(feature_dir))

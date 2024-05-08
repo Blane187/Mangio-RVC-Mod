@@ -62,9 +62,11 @@ def load_audio(file, sr, DoFormant, Quefrency, Timbre):
         # print(f"dofor={bool(DoFormant)} timbr={Timbre} quef={Quefrency}\n")
 
         if (
-            lambda DoFormant: True
-            if DoFormant.lower() == "true"
-            else (False if DoFormant.lower() == "false" else DoFormant)
+            lambda DoFormant: (
+                True
+                if DoFormant.lower() == "true"
+                else (False if DoFormant.lower() == "false" else DoFormant)
+            )
         )(DoFormant):
             numerator = round(random.uniform(1, 4), 4)
             # os.system(f"stftpitchshift -i {file} -q {Quefrency} -t {Timbre} -o {file_formanted}")
