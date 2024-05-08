@@ -1,44 +1,12 @@
-# 7/28 Changelog:
-- Undo SQL change for the sake of stability, uses csv now
-- Merging checkpoints bug has been resolved
-
-# 7/26 Changelog:
-- Fixed the cli inferencing traceback.
-- SQL Databases implemented for formanting training stop.
-- Gradio browser tab renamed to `Mangio-RVC-Web 💻`.
-- Rudimentary functions from `infer-web.py` removed.
-- Formanting now accepts any audio format, as long as it is supported by FFmpeg.
-
-# 7/25 Changelog:
-- Better MacOS installation script. For inference, all that needs to be done is running the `run.sh` from the extracted zip folder, where it will install Python 3.8, Homebrew, and other dependencies for you automatically. M1 Macs are natively supported for GPU acceleration, and training should work if you choose to download the pretrained models.
-
-# 7/23 Changelog:
-- Fp16 detection now works how it did before the last RVC beta; no more training slowdowns compared to how it was before then
-- Logging on TensorBoard is now done per epoch. It logs every X steps in an epoch; therefore each point on the graph is now represented per-epoch.
-- Updated UI to include placeholders.
-- Certain sliders now appear only when needed.
-- Step 2b (feature extract) is hidden if pitch guidance is disabled.
-- Unnecessary radios have been replaced with checkboxes.
-
-# 7/22 Changelog:
-- Experimental Formant Shift using StftPitchShift(tried using praat with praatio but to no avail)
-- Added `Stop Training` button when training, no need to restart RVC every time you want to stop the training of a model!
-- Auto-detect Index path for models selected + Auto-detect paths, no more default values like this: `E:\codes\py39\vits_vc_gpu_train\logs\mi-test-1key\total_fea.npy`, We're getting Root Dir and subfolders using 
-```python 
-os.path.abspath(os.getcwd())
-``` 
-- Audio files dropdown by autodetecting files in `/audios/` folder 
-- More stable version of Gradio(3.34.0) with support of Themes
-- Removed `One Click Training` button in `Training` Tab, since it was glitchy and has confused a lot of users. 
-- Changed default training settings to be more optimal for newer users. 
-- Auto-open TensorBoard localhost URL when `tensor-launch.py` is executed 
-- RMVPE implemented in both inferencing and training
-
 
 <div align="center">
 <h1>Mangio-RVC-Fork with v2 Support! 💻 </h1>
 A fork of an easy-to-use SVC framework based on VITS with top1 retrieval 💯. In general, this fork provides a CLI interface in addition. And also gives you more f0 methods to use, as well as a personlized 'hybrid' f0 estimation method using nanmedian. <br><br>
 <b> 
+
+
+[![madewithlove](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI)<br>[![Licence](https://img.shields.io/github/license/liujing04/Retrieval-based-Voice-Conversion-WebUI?style=for-the-badge)](https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI/blob/main/%E4%BD%BF%E7%94%A8%E9%9C%80%E9%81%B5%E5%AE%88%E7%9A%84%E5%8D%8F%E8%AE%AE-LICENSE.txt)<br>[![Huggingface](https://img.shields.io/badge/🤗%20-Spaces-yellow.svg?style=for-the-badge)](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main/)<br>[![Discord](https://img.shields.io/badge/RVC%20Developers-Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/HcsmBBGyVk)<br>[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/drive/1iWOLYE9znqT6XE5Rw2iETE19ZlqpziLx?usp=sharing)
+
 
 <h1> !! Feature implementations have been post-poned -- working on other related improvements !! </h1>
 
@@ -54,18 +22,10 @@ A fork of an easy-to-use SVC framework based on VITS with top1 retrieval 💯. I
 ## Add me on discord: Funky Town#2048
 I am able to communicate with you here and there.
 
-[![madewithlove](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI)
-  
-[![Licence](https://img.shields.io/github/license/liujing04/Retrieval-based-Voice-Conversion-WebUI?style=for-the-badge)](https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI/blob/main/%E4%BD%BF%E7%94%A8%E9%9C%80%E9%81%B5%E5%AE%88%E7%9A%84%E5%8D%8F%E8%AE%AE-LICENSE.txt)
-
-[![Huggingface](https://img.shields.io/badge/🤗%20-Spaces-yellow.svg?style=for-the-badge)](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main/)
-
-[![Discord](https://img.shields.io/badge/RVC%20Developers-Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/HcsmBBGyVk)
 
 Special thanks to discord user @kalomaze#2983 for creating a temporary colab notebook for this fork for the time being. Eventually, an official, more stable notebook will be included with this fork. Please use paperspace instead if you can as it is much more stable.
 <br>
 
-[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/drive/1iWOLYE9znqT6XE5Rw2iETE19ZlqpziLx?usp=sharing)
 
 <img src="https://33.media.tumblr.com/2344c05b16d25e60771d315604f90258/tumblr_nmy9cc0Zm71syljkjo1_1280.gif" /><br>
   
